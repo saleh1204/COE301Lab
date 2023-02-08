@@ -5,3 +5,7 @@
 *.snm 
 *.toc
 *.pdf
+*.gz 
+*.vrb
+_minted*
+.vscode
