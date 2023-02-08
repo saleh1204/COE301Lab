@@ -1,0 +1,382 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Beamer Presentation
+% LaTeX Template
+% Version 2.0 (March 8, 2022)
+%
+% This template originates from:
+% https://www.LaTeXTemplates.com
+%
+% Author:
+% Vel (vel@latextemplates.com)
+%
+% License:
+% CC BY-NC-SA 4.0 (https://creativecommons.org/licenses/by-nc-sa/4.0/)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass[
+	10pt, % Set the default font size, options include: 8pt, 9pt, 10pt, 11pt, 12pt, 14pt, 17pt, 20pt
+	%t, % Uncomment to vertically align all slide content to the top of the slide, rather than the default centered
+	%aspectratio=169, % Uncomment to set the aspect ratio to a 16:9 ratio which matches the aspect ratio of 1080p and 4K screens and projectors
+	hmargin=1cm,vmargin=0cm,head=0.5cm,headsep=0pt,foot=0.5cm,margin=2cm
+]{beamer}
+
+% Hide navigation symbols
+\setbeamertemplate{navigation symbols}{}
+
+\usepackage{caption}
+\captionsetup[figure]{labelsep=space}
+\renewcommand{\figurename}{}
+\renewcommand{\tablename}{}
+\graphicspath{{images/}{./}} % Specifies where to look for included images (trailing slash required)
+\usepackage{minted}
+%\usemintedstyle{pastie}
+\usepackage{amsmath}
+\usepackage{multirow}
+\usepackage{color, colortbl}
+\usepackage{xcolor}
+\usepackage{booktabs} % Allows the use of \toprule, \midrule and \bottomrule for better rules in tables
+\usepackage{graphicx}
+\usepackage{minibox}
+\renewcommand{\arraystretch}{1.2} % Default value: 1
+\definecolor{darkGreen}{RGB}{9,150,3} 
+\usepackage{tikz}
+
+\newcommand{\tikzunderarrow}[2][black]{\tikz[baseline={(N.base)}]{
+  \node[inner sep=0, outer sep=0](N) {#2};
+  \draw[overlay, -latex, line width=.04em, #1]
+    ([yshift=-.14em]N.south west) -- ([yshift=-.14em]N.south east);}}
+
+
+
+%	SELECT LAYOUT THEME
+%----------------------------------------------------------------------------------------
+%
+% Beamer comes with a number of default layout themes which change the colors and layouts of slides. Below is a list of all themes available, uncomment each in turn to see what they look like.
+
+%\usetheme{default}
+%\usetheme{AnnArbor}
+%\usetheme{Antibes}
+%\usetheme{Bergen}
+%\usetheme{Berkeley}
+% \usetheme{Berlin}
+%\usetheme{Boadilla}
+% \usetheme{CambridgeUS}
+% \usetheme{Copenhagen}
+% \usetheme{Darmstadt}
+% \usetheme{Dresden}
+% \usetheme{Frankfurt}
+% \usetheme{Goettingen}
+% \usetheme{Hannover}
+% \usetheme{Ilmenau}
+% \usetheme{JuanLesPins}
+% \usetheme{Luebeck}
+\usetheme{Madrid}
+%\usetheme{Malmoe}
+%\usetheme{Marburg}
+%\usetheme{Montpellier}
+%\usetheme{PaloAlto}
+%\usetheme{Pittsburgh}
+%\usetheme{Rochester}
+%\usetheme{Singapore}
+%\usetheme{Szeged}
+%\usetheme{Warsaw}
+
+%----------------------------------------------------------------------------------------
+%	SELECT COLOR THEME
+%----------------------------------------------------------------------------------------
+
+% Beamer comes with a number of color themes that can be applied to any layout theme to change its colors. Uncomment each of these in turn to see how they change the colors of your selected layout theme.
+
+% \usecolortheme{albatross}
+% \usecolortheme{beaver}
+% \usecolortheme{beetle}
+% \usecolortheme{crane}
+% \usecolortheme{dolphin}
+% \usecolortheme{dove}
+% \usecolortheme{fly}
+% \usecolortheme{lily}
+% \usecolortheme{monarca}
+% \usecolortheme{seagull}
+% \usecolortheme{seahorse}
+\usecolortheme{spruce}
+% \usecolortheme{whale}
+% \usecolortheme{wolverine}
+
+%----------------------------------------------------------------------------------------
+%	SELECT FONT THEME & FONTS
+%----------------------------------------------------------------------------------------
+
+% Beamer comes with several font themes to easily change the fonts used in various parts of the presentation. Review the comments beside each one to decide if you would like to use it. Note that additional options can be specified for several of these font themes, consult the beamer documentation for more information.
+
+\usefonttheme{default} % Typeset using the default sans serif font
+%\usefonttheme{serif} % Typeset using the default serif font (make sure a sans font isn't being set as the default font if you use this option!)
+\usefonttheme{structurebold} % Typeset important structure text (titles, headlines, footlines, sidebar, etc) in bold
+%\usefonttheme{structureitalicserif} % Typeset important structure text (titles, headlines, footlines, sidebar, etc) in italic serif
+%\usefonttheme{structuresmallcapsserif} % Typeset important structure text (titles, headlines, footlines, sidebar, etc) in small caps serif
+
+%------------------------------------------------
+
+%\usepackage{mathptmx} % Use the Times font for serif text
+\usepackage{palatino} % Use the Palatino font for serif text
+
+%\usepackage{helvet} % Use the Helvetica font for sans serif text
+\usepackage[default]{opensans} % Use the Open Sans font for sans serif text
+%\usepackage[default]{FiraSans} % Use the Fira Sans font for sans serif text
+%\usepackage[default]{lato} % Use the Lato font for sans serif text
+
+%----------------------------------------------------------------------------------------
+%	SELECT INNER THEME
+%----------------------------------------------------------------------------------------
+
+% Inner themes change the styling of internal slide elements, for example: bullet points, blocks, bibliography entries, title pages, theorems, etc. Uncomment each theme in turn to see what changes it makes to your presentation.
+
+%\useinnertheme{default}
+\useinnertheme{circles}
+% \useinnertheme{rectangles}
+% \useinnertheme{rounded}
+%\useinnertheme{inmargin}
+
+%----------------------------------------------------------------------------------------
+%	SELECT OUTER THEME
+%----------------------------------------------------------------------------------------
+
+% Outer themes change the overall layout of slides, such as: header and footer lines, sidebars and slide titles. Uncomment each theme in turn to see what changes it makes to your presentation.
+
+% \useoutertheme{default}
+% \useoutertheme{infolines}
+\useoutertheme{miniframes}
+% \useoutertheme{smoothbars}
+% \useoutertheme{sidebar}
+%\useoutertheme{split}
+% \useoutertheme{shadow}
+% \useoutertheme{tree}
+%\useoutertheme{smoothtree}
+%----------------------------------------------------------------------------------------
+%	PRESENTATION INFORMATION
+%----------------------------------------------------------------------------------------
+
+\title[LAB 04: Flow Control]{LAB 04: Flow Control} % The short title in the optional parameter appears at the bottom of every slide, the full title in the main parameter is only on the title page
+
+\author[S. AlSaleh]{Saleh AlSaleh \\ \smallskip \textit{salehs@kfupm.edu.sa}} % Presenter name(s), the optional parameter can contain a shortened version to appear on the bottom of every slide, while the main parameter will appear on the title slide
+
+\institute[KFUPM]{King Fahd University of Petroleum and Minerals \\ College of Computing and Mathematics \\ Computer Engineering Department} % Your institution, the optional parameter can be used for the institution shorthand and will appear on the bottom of every slide after author names, while the required parameter is used on the title slide and can include your email address or additional information on separate lines
+
+\date[February 5, 2023]{COE301: Computer Architecture \\ Term 222} % Presentation date or conference/meeting name, the optional parameter can contain a shortened version to appear on the bottom of every slide, while the required parameter value is output to the title slide
+
+%----------------------------------------------------------------------------------------
+
+\begin{document}
+
+%----------------------------------------------------------------------------------------
+%	TITLE SLIDE
+%----------------------------------------------------------------------------------------
+
+\begin{frame}
+	% Output the title slide, automatically created using the text entered in the PRESENTATION INFORMATION block above
+	\titlepage
+\end{frame}
+
+%----------------------------------------------------------------------------------------
+%	TABLE OF CONTENTS SLIDE
+%----------------------------------------------------------------------------------------
+
+\begin{frame}
+	\frametitle{Agenda} % Slide title, remove this command for no title
+	\tableofcontents % Output the table of contents (all sections on one slide)
+\end{frame}
+
+%----------------------------------------------------------------------------------------
+%	PRESENTATION BODY SLIDES
+%----------------------------------------------------------------------------------------
+
+\section{Unconditional Jump} 
+\begin{frame}
+	\frametitle{Unconditional Jump}
+	
+	\begin{itemize}
+		\item Code Labels are used to define important locations in code. \pause
+		\item jump instruction is used to jump to another location in code unconditionally. \pause
+		\item Syntax: \color{blue}j \color{black} label
+	\end{itemize}
+\end{frame}
+
+\section{Conditional Jump} 
+\begin{frame}
+	\frametitle{Conditional Jump}
+	\begin{itemize}
+		\item Branch instructions is used to jump to another location in code if a condition is satisfied. \pause
+		\item Basic Branch Instructions: \color{blue}beq\color{black}, \color{blue}bne\color{black}, \color{blue}blez\color{black}, \color{blue}bgtz\color{black}, \color{blue}bltz\color{black}, \color{blue}bgez\color{black} \pause
+		\item Syntax: \color{blue}beq \color{red}\$op1\color{black}, \color{red}\$op2\color{black}, label2 \\ 
+			\hspace{1.2cm} if value in \color{red}\$op1\color{black} is equal to the value in \color{red}\$op2\color{black}, go to label2.
+		\item Used in loops and if statements
+	\end{itemize}
+\end{frame}
+
+\section{Pseudo Instructions}
+\begin{frame}
+	\frametitle{Branch Pseudo Instructions}
+	\begin{itemize}
+		\item blt, bltu
+		\item ble, bleu
+		\item bgt, bgtu
+		\item bge, bgeu
+		\item e.g. \color{blue}blt \color{red}\$s1\color{black}, \color{red}\$s2\color{black}, label 	\( \Rightarrow \) 	\color{blue}slt \color{red}\$at\color{black}, \color{red}\$s1\color{black}, \color{red}\$s2\color{black} \\ 
+		\hspace{3.9cm} \color{blue}bne \color{red}\$at\color{black}, \color{red}\$zero\color{black}, label
+	\end{itemize}
+\end{frame}
+
+
+\section{Examples}
+% [fragile]{Transformer}
+\begin{frame}[fragile]
+	\frametitle{Example \#1: if statement}
+	\begin{columns}[c]
+		\begin{column}{0.3\textwidth}<1->
+			\begin{listing}[H]
+			\centering			
+			\begin{minted}[autogobble,xleftmargin=0.1\textwidth,xrightmargin=0.1\textwidth,framesep=2mm,baselinestretch=1.2,fontsize=\footnotesize,obeytabs]{c}
+				if (a==b) 
+				{
+				  c = d + e ;
+				}
+				else
+				{
+				  c = d - e ;
+				}
+			\end{minted}
+			\end{listing}
+			\begin{flushleft}
+				Assume \color{red}a\color{black},\hspace{0.1cm}\color{red} b\color{black},\hspace{0.1cm}\color{red} c\color{black},\hspace{0.1cm}\color{red} d\color{black},\hspace{0.1cm}\color{red} e\color{black} \hspace{0.1cm} are stored in \\ \color{red}\$s0\color{black},\hspace{0.1cm}\color{red} \$s1\color{black},\hspace{0.1cm}\color{red} \$s2\color{black},\hspace{0.1cm}\color{red} \$s3\color{black},\hspace{0.1cm}\color{red} \$s4\color{black}\\ respectively. \pause
+			\end{flushleft}
+		\end{column}
+		\begin{column}{0.3\textwidth}<2->
+			\color{blue}beq \color{red}\$s0\color{black}, \color{red}\$s1\color{black}, true \\
+			\# false cond here \\
+			\color{blue}sub \color{red}\$s2\color{black}, \color{red}\$s3\color{black}, \color{red}\$s4 \\
+			\color{blue}j \color{black}exit \\
+			true:  \\
+			\color{blue}add \color{red}\$s2\color{black}, \color{red}\$s3\color{black}, \color{red}\$s4\color{black} \\
+			exit:  \\
+			... \\
+		\end{column}
+		\begin{column}{0.3\textwidth}<3->
+			\color{blue}bne \color{red}\$s0\color{black}, \color{red}\$s1\color{black}, false \\
+			\# true cond here \\
+			\color{blue}add \color{red}\$s2\color{black}, \color{red}\$s3\color{black}, \color{red}\$s4 \\
+			\color{blue}j \color{black}exit \\
+			false:  \\
+			\color{blue}sub \color{red}\$s2\color{black}, \color{red}\$s3\color{black}, \color{red}\$s4\color{black} \\
+			exit:  \\
+			... \\
+		\end{column}
+	\end{columns}
+\end{frame}
+\begin{frame}[fragile]
+	\frametitle{Example \#2: for loop}
+	\begin{columns}[c]
+		\begin{column}{0.3\textwidth}<1->
+			\begin{listing}[H]
+			\centering			
+			\begin{minted}[numbersep=0pt,autogobble,xleftmargin=0.05\textwidth,xrightmargin=0.05\textwidth,framesep=2mm,baselinestretch=1.1,fontsize=\footnotesize,obeytabs]{c}
+				for (int i=0;i<n;i++)
+				{
+				  //loop body
+				}
+			\end{minted}
+			\end{listing}
+			\begin{flushleft}
+				Assume \color{red}i\color{black}\hspace{0.1cm}is stored in \color{red}\$s0\color{black}\hspace{0.1cm} and \color{red}n\color{black}\hspace{0.1cm} is stored in \color{red}\$s1\color{black}. \pause
+			\end{flushleft}
+		\end{column}
+		\begin{column}{0.3\textwidth}<2->
+			\color{blue}li \color{red}\$s0\color{black}, 0 \\
+			loop: \\
+			\color{blue}bge \color{red}\$s0\color{black}, \color{red}\$s1\color{black}, endLoop \\
+			\# loop body \\
+			\color{blue}addi \color{red}\$s0\color{black}, \color{red}\$s0\color{black}, 1 \\
+			\color{blue}j \color{black}loop \\
+			endLoop:  \\
+			... \\
+		\end{column}
+		\begin{column}{0.3\textwidth}<3->
+			\color{blue}li \color{red}\$s0\color{black}, 0 \\
+			loopCheck: \\
+			\color{blue}blt \color{red}\$s0\color{black}, \color{red}\$s1\color{black}, loop \\
+			... \\
+			loop: \\
+			\# loop body \\
+			\color{blue}addi \color{red}\$s0\color{black}, \color{red}\$s0\color{black}, 1 \\
+			\color{blue}j \color{black}loopCheck \\
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Live Examples}
+	
+\end{frame}
+
+%------------------------------------------------
+
+\section{Tasks}
+
+\begin{frame}
+	\frametitle{Task \#1}
+	Write a MIPS program where you ask the user to enter a character.
+
+	Then, print one of the following messages based on the user's input.
+	\begin{itemize}
+		\item Uppercase
+		\item Lowercase
+		\item Digit
+		\item Special Character
+	\end{itemize}
+
+	\vspace{0.5cm}
+	\begin{columns}[c]
+		\begin{column}{0.2\textwidth}
+			Sample Run 1
+
+			\minibox[frame,pad=4pt]{
+				\color{black} Enter a character: \color{blue} a \\
+				\color{darkGreen} Lowercase                     \\
+			}	
+		\end{column}
+		\begin{column}{0.2\textwidth}
+			Sample Run 2
+
+			\minibox[frame,pad=4pt]{
+				\color{black} Enter a character: \color{blue} \$ \\
+				\color{darkGreen} Special Character              \\
+			}		
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Task \#2}
+	Write a MIPS assembly program that reads 6 integers and correctly report back their sum. 
+
+	\textbf{NOTE}: Reading the 6 integers should be done in a loop not by repeating the reading instructions six times. \\
+	
+	\centering
+	Sample Run \\ 
+	\minibox[frame,pad=4pt]{
+		\color{black} Enter integer 0: \color{blue} 5    \\
+		\color{black} Enter integer 1: \color{blue} 12   \\
+		\color{black} Enter integer 2: \color{blue} 76   \\
+		\color{black} Enter integer 3: \color{blue} 43   \\
+		\color{black} Enter integer 4: \color{blue} 37   \\
+		\color{black} Enter integer 5: \color{blue} 58   \\
+		\color{black} Sum = \color{darkGreen} 231        \\
+	}	
+\end{frame}
+
+%----------------------------------------------------------------------------------------
+
+\end{document} 
