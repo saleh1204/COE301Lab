@@ -21,6 +21,6 @@ clean: clean_aux
 	rm -f $(PDF)
 
 clean_aux: 
-	rm -f *.aux *.log *.nav *.out *.snm *.toc *.gz *.vrb
+	rm -rf *.aux *.log *.nav *.out *.snm *.toc *.gz *.vrb _minted*
 
 .PHONY: all clean clean_aux pdf
