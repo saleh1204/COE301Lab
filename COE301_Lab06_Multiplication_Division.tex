@@ -1,0 +1,303 @@
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass[
+	10pt, % Set the default font size, options include: 8pt, 9pt, 10pt, 11pt, 12pt, 14pt, 17pt, 20pt
+	%t, % Uncomment to vertically align all slide content to the top of the slide, rather than the default centered
+	%aspectratio=169, % Uncomment to set the aspect ratio to a 16:9 ratio which matches the aspect ratio of 1080p and 4K screens and projectors
+	hmargin=1cm,vmargin=0cm,head=0.5cm,headsep=0pt,foot=0.5cm,margin=2cm
+]{beamer}
+
+% Hide navigation symbols
+\setbeamertemplate{navigation symbols}{}
+ 
+\usepackage{caption}
+\captionsetup{labelformat=empty,labelsep=none}
+\graphicspath{{images/}{./}} % Specifies where to look for included images (trailing slash required)
+\usepackage{minted}
+\usepackage{amsmath}
+\usepackage{multirow}
+\usepackage{color, colortbl}
+\usepackage{xcolor}
+\usepackage{booktabs} % Allows the use of \toprule, \midrule and \bottomrule for better rules in tables
+\usepackage{graphicx}
+\usepackage{minibox}
+\renewcommand{\arraystretch}{1.2} % Default value: 1
+\definecolor{darkGreen}{RGB}{9,150,3} 
+\usepackage{tikz}
+
+\newcommand{\tikzunderarrow}[2][black]{\tikz[baseline={(N.base)}]{
+  \node[inner sep=0, outer sep=0](N) {#2};
+  \draw[overlay, -latex, line width=.04em, #1]
+    ([yshift=-.14em]N.south west) -- ([yshift=-.14em]N.south east);}}
+\usepackage{ragged2e}
+\tolerance=1
+\emergencystretch=\maxdimen
+\hyphenpenalty=10000
+\hbadness=10000
+
+%	SELECT LAYOUT THEME
+%----------------------------------------------------------------------------------------
+%
+% Beamer comes with a number of default layout themes which change the colors and layouts of slides. Below is a list of all themes available, uncomment each in turn to see what they look like.
+
+%\usetheme{default}
+%\usetheme{AnnArbor}
+%\usetheme{Antibes}
+%\usetheme{Bergen}
+%\usetheme{Berkeley}
+% \usetheme{Berlin}
+%\usetheme{Boadilla}
+% \usetheme{CambridgeUS}
+% \usetheme{Copenhagen}
+% \usetheme{Darmstadt}
+% \usetheme{Dresden}
+% \usetheme{Frankfurt}
+% \usetheme{Goettingen}
+% \usetheme{Hannover}
+% \usetheme{Ilmenau}
+% \usetheme{JuanLesPins}
+% \usetheme{Luebeck}
+\usetheme{Madrid}
+%\usetheme{Malmoe}
+%\usetheme{Marburg}
+%\usetheme{Montpellier}
+%\usetheme{PaloAlto}
+%\usetheme{Pittsburgh}
+%\usetheme{Rochester}
+%\usetheme{Singapore}
+%\usetheme{Szeged}
+%\usetheme{Warsaw}
+
+%----------------------------------------------------------------------------------------
+%	SELECT COLOR THEME
+%----------------------------------------------------------------------------------------
+
+% Beamer comes with a number of color themes that can be applied to any layout theme to change its colors. Uncomment each of these in turn to see how they change the colors of your selected layout theme.
+
+% \usecolortheme{albatross}
+% \usecolortheme{beaver}
+% \usecolortheme{beetle}
+% \usecolortheme{crane}
+% \usecolortheme{dolphin}
+% \usecolortheme{dove}
+% \usecolortheme{fly}
+% \usecolortheme{lily}
+% \usecolortheme{monarca}
+% \usecolortheme{seagull}
+% \usecolortheme{seahorse}
+\usecolortheme{spruce}
+% \usecolortheme{whale}
+% \usecolortheme{wolverine}
+
+%----------------------------------------------------------------------------------------
+%	SELECT FONT THEME & FONTS
+%----------------------------------------------------------------------------------------
+
+% Beamer comes with several font themes to easily change the fonts used in various parts of the presentation. Review the comments beside each one to decide if you would like to use it. Note that additional options can be specified for several of these font themes, consult the beamer documentation for more information.
+
+\usefonttheme{default} % Typeset using the default sans serif font
+%\usefonttheme{serif} % Typeset using the default serif font (make sure a sans font isn't being set as the default font if you use this option!)
+\usefonttheme{structurebold} % Typeset important structure text (titles, headlines, footlines, sidebar, etc) in bold
+%\usefonttheme{structureitalicserif} % Typeset important structure text (titles, headlines, footlines, sidebar, etc) in italic serif
+%\usefonttheme{structuresmallcapsserif} % Typeset important structure text (titles, headlines, footlines, sidebar, etc) in small caps serif
+
+%------------------------------------------------
+
+%\usepackage{mathptmx} % Use the Times font for serif text
+\usepackage{palatino} % Use the Palatino font for serif text
+
+%\usepackage{helvet} % Use the Helvetica font for sans serif text
+\usepackage[default]{opensans} % Use the Open Sans font for sans serif text
+%\usepackage[default]{FiraSans} % Use the Fira Sans font for sans serif text
+%\usepackage[default]{lato} % Use the Lato font for sans serif text
+
+%----------------------------------------------------------------------------------------
+%	SELECT INNER THEME
+%----------------------------------------------------------------------------------------
+
+% Inner themes change the styling of internal slide elements, for example: bullet points, blocks, bibliography entries, title pages, theorems, etc. Uncomment each theme in turn to see what changes it makes to your presentation.
+
+%\useinnertheme{default}
+\useinnertheme{circles}
+% \useinnertheme{rectangles}
+% \useinnertheme{rounded}
+%\useinnertheme{inmargin}
+
+%----------------------------------------------------------------------------------------
+%	SELECT OUTER THEME
+%----------------------------------------------------------------------------------------
+
+% Outer themes change the overall layout of slides, such as: header and footer lines, sidebars and slide titles. Uncomment each theme in turn to see what changes it makes to your presentation.
+
+% \useoutertheme{default}
+% \useoutertheme{infolines}
+\useoutertheme{miniframes}
+% \useoutertheme{smoothbars}
+% \useoutertheme{sidebar}
+%\useoutertheme{split}
+% \useoutertheme{shadow}
+% \useoutertheme{tree}
+%\useoutertheme{smoothtree}
+%----------------------------------------------------------------------------------------
+%	PRESENTATION INFORMATION
+%----------------------------------------------------------------------------------------
+
+\title[LAB 06: Integer Multiplication and Division]{LAB 06: Integer Multiplication and Division} % The short title in the optional parameter appears at the bottom of every slide, the full title in the main parameter is only on the title page
+
+\author[S. AlSaleh]{Saleh AlSaleh \\ \smallskip \textit{salehs@kfupm.edu.sa}} % Presenter name(s), the optional parameter can contain a shortened version to appear on the bottom of every slide, while the main parameter will appear on the title slide
+
+\institute[KFUPM]{King Fahd University of Petroleum and Minerals \\ College of Computing and Mathematics \\ Computer Engineering Department} % Your institution, the optional parameter can be used for the institution shorthand and will appear on the bottom of every slide after author names, while the required parameter is used on the title slide and can include your email address or additional information on separate lines
+
+\date[February 19, 2023]{COE301: Computer Architecture \\ Term 222} % Presentation date or conference/meeting name, the optional parameter can contain a shortened version to appear on the bottom of every slide, while the required parameter value is output to the title slide
+
+%----------------------------------------------------------------------------------------
+
+\begin{document}
+
+%----------------------------------------------------------------------------------------
+%	TITLE SLIDE
+%----------------------------------------------------------------------------------------
+
+\begin{frame}
+	% Output the title slide, automatically created using the text entered in the PRESENTATION INFORMATION block above
+	\titlepage
+\end{frame}
+
+%----------------------------------------------------------------------------------------
+%	TABLE OF CONTENTS SLIDE
+%----------------------------------------------------------------------------------------
+
+\begin{frame}
+	\frametitle{Agenda} % Slide title, remove this command for no title
+	\tableofcontents % Output the table of contents (all sections on one slide)
+\end{frame}
+
+%----------------------------------------------------------------------------------------
+%	PRESENTATION BODY SLIDES
+%----------------------------------------------------------------------------------------
+
+\section{Integer Multiplication} 
+\begin{frame}
+	\frametitle{Integer Multiplication}
+	
+	\begin{itemize}
+		\item The result of multiplying n bit number by another n bit number is \pause \newline n + n bits.
+		\item Multiplication is done through addition and shifting operations.		\pause
+		\item MIPS has two special register for the result of multiplication: HI, LO. \pause
+		\item MIPS Multiplication Instructions:
+		\begin{itemize}
+			\item \color{blue}mult  \hspace{0.2cm}\color{red}\$t0\color{black}, \color{red}\$t1\color{black} 									\hspace{0.95cm}\# for signed multiplication
+			\item \color{blue}multu \color{red}\$t0\color{black}, \color{red}\$t1\color{black} 													\hspace{0.95cm}\# for unsigned multiplication
+			\item \color{blue}mul   \hspace{0.3cm}\color{red}\$t2\color{black}, \color{red}\$t0\color{black}, \color{red}\$t1\color{black}		\hspace{0.3cm}\# \$t2 contains LO register value
+		\end{itemize}
+	\end{itemize}
+\end{frame}
+
+\section{Integer Division} 
+\begin{frame}
+	\frametitle{Integer Division}
+	\begin{itemize}
+		\item Binary division produces a quotient and a remainder. \pause
+		\item Division is done through subtraction and shifting operations. \pause
+		\item MIPS has two special register for the result of division: HI, LO. \pause
+		\begin{itemize}
+			\item HI register contains the remainder 
+			\item LO register contains the quotient \pause
+		\end{itemize}
+		\item MIPS Division Instructions:
+		\begin{itemize}
+			\item \color{blue}div  \hspace{0.2cm}\color{red}\$t0\color{black}, \color{red}\$t1\color{black}	\hspace{0.3cm}\# for signed division
+			\item \color{blue}divu \color{red}\$t0\color{black}, \color{red}\$t1\color{black}				\hspace{0.3cm}\# for unsigned division
+		\end{itemize}
+	\end{itemize}
+\end{frame}
+
+\section{Special Instructions}
+\begin{frame}
+	\frametitle{Special Instructions}
+	MIPS has special instructions that allow copying the values from the special registers (HI, LO):
+	\begin{itemize}
+		\item \color{blue}mfhi \color{red}\$t0\color{black}\hspace{0.3cm} \# copy the contents of the HI register to \$t0 
+		\item \color{blue}mflo \color{red}\$t0\color{black}\hspace{0.3cm} \# copy the contents of the LO register to \$t0 
+	\end{itemize}
+\end{frame}
+
+\section{Live Examples}
+\begin{frame}
+	\frametitle{Live Examples}
+	
+\end{frame}
+
+%------------------------------------------------
+
+\section{Tasks}
+
+\begin{frame}
+	\frametitle{Task \#1}
+	\justifying
+	Write a MIPS assembly program that asks the user about the total amount of money he wishes to withdraw from the ATM. 
+	Then, calculate the minimum number of bank notes (500, 100, 50, 10, 5, 1) required for his withdrawal. 
+	Finally, print out the count of each banknote required. If a bank note is not required (i.e., its count is zero), do not print it out. 
+
+	\vspace{0.3cm}
+	\centering
+	Sample Run
+
+	\minibox[frame,pad=4pt]{
+		\color{black} Enter withdrawal amount: \color{blue} 3243 \\
+		\color{black} 500 Bank note: \color{darkGreen} 6 \\
+		\color{black} 100 Bank note: \color{darkGreen} 2 \\
+		\color{black}  10 Bank note: \color{darkGreen} 4 \\
+		\color{black}   1 Bank note: \color{darkGreen} 3 \\
+		
+	}		
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{Task \#2}
+	\begin{columns}[c]
+		\begin{column}{0.5\textwidth}
+			\justifying
+			Write a MIPS assembly program that asks the user for an integer \underline{\textbf{n}} that he wishes to compute the factorial of. Calculate \underline{\textbf{n!}} based on the following code. Finally, print out the result.
+
+
+			\vspace{0.3cm}
+			Answer the following question in your report: \\
+
+
+			Q. What is the maximum value of \underline{\textbf{n}} such that \underline{\textbf{n!}} can fit in a 32-bit register?
+		\end{column}
+		\begin{column}{0.5\textwidth}
+		\centering
+			\begin{listing}[H]
+			\centering			
+			\caption{Iterative factorial function}
+			\begin{minted}[frame=single,autogobble,xleftmargin=0.1\textwidth,xrightmargin=0.1\textwidth,framesep=2mm,baselinestretch=1.2,fontsize=\footnotesize,obeytabs,tabsize=2]{c}
+			int fact(int n){
+				int result = 1;
+				for (int i=1; i<=n; i++){
+					result = result * i;
+				}
+				return result;
+			}
+			\end{minted}
+			\end{listing}
+
+			\vspace{0.15cm}
+			\centering
+			Sample Run 
+
+			\minibox[frame,pad=4pt]{
+				\color{black}Enter n: \color{blue}7 \\
+				\color{black}n! = \color{darkGreen}5040 \\
+			}
+			
+		\end{column}
+	\end{columns}
+\end{frame}
+
+%----------------------------------------------------------------------------------------
+
+\end{document} 
