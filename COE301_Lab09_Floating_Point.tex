@@ -1,0 +1,411 @@
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass[
+	11pt, % Set the default font size, options include: 8pt, 9pt, 10pt, 11pt, 12pt, 14pt, 17pt, 20pt
+	%t, % Uncomment to vertically align all slide content to the top of the slide, rather than the default centered
+	%aspectratio=169, % Uncomment to set the aspect ratio to a 16:9 ratio which matches the aspect ratio of 1080p and 4K screens and projectors
+]{beamer}
+
+% Hide navigation symbols
+\setbeamertemplate{navigation symbols}{}
+
+\usepackage{caption}
+\captionsetup{labelformat=empty,labelsep=none}
+\graphicspath{{images/}{./}} % Specifies where to look for included images (trailing slash required)
+% \usepackage{setspace}
+\linespread{1}
+\usepackage{amsmath}
+\usepackage{multirow}
+\usepackage{color, colortbl}
+\usepackage{xcolor}
+\usepackage{booktabs} % Allows the use of \toprule, \midrule and \bottomrule for better rules in tables
+\usepackage{graphicx}
+\usepackage{minibox}
+\renewcommand{\arraystretch}{1.2} % Default value: 1
+\definecolor{darkGreen}{RGB}{9,150,3} 
+\usepackage{tikz}
+
+\newcommand{\tikzunderarrow}[2][black]{\tikz[baseline={(N.base)}]{
+  \node[inner sep=0, outer sep=0](N) {#2};
+  \draw[overlay, -latex, line width=.04em, #1]
+    ([yshift=-.14em]N.south west) -- ([yshift=-.14em]N.south east);}}
+\usepackage{ragged2e}
+\tolerance=1
+\emergencystretch=\maxdimen
+\hyphenpenalty=10000
+\hbadness=10000
+
+%----------------------------------------------------------------------------------------
+%	SELECT LAYOUT THEME
+%----------------------------------------------------------------------------------------
+
+% Beamer comes with a number of default layout themes which change the colors and layouts of slides. Below is a list of all themes available, uncomment each in turn to see what they look like.
+
+%\usetheme{default}
+%\usetheme{AnnArbor}
+%\usetheme{Antibes}
+%\usetheme{Bergen}
+%\usetheme{Berkeley}
+% \usetheme{Berlin}
+%\usetheme{Boadilla}
+% \usetheme{CambridgeUS}
+% \usetheme{Copenhagen}
+% \usetheme{Darmstadt}
+% \usetheme{Dresden}
+% \usetheme{Frankfurt}
+% \usetheme{Goettingen}
+% \usetheme{Hannover}
+% \usetheme{Ilmenau}
+% \usetheme{JuanLesPins}
+% \usetheme{Luebeck}
+\usetheme{Madrid}
+%\usetheme{Malmoe}
+%\usetheme{Marburg}
+%\usetheme{Montpellier}
+%\usetheme{PaloAlto}
+%\usetheme{Pittsburgh}
+%\usetheme{Rochester}
+%\usetheme{Singapore}
+%\usetheme{Szeged}
+%\usetheme{Warsaw}
+
+%----------------------------------------------------------------------------------------
+%	SELECT COLOR THEME
+%----------------------------------------------------------------------------------------
+
+% Beamer comes with a number of color themes that can be applied to any layout theme to change its colors. Uncomment each of these in turn to see how they change the colors of your selected layout theme.
+
+% \usecolortheme{albatross}
+% \usecolortheme{beaver}
+% \usecolortheme{beetle}
+% \usecolortheme{crane}
+% \usecolortheme{dolphin}
+% \usecolortheme{dove}
+% \usecolortheme{fly}
+% \usecolortheme{lily}
+% \usecolortheme{monarca}
+% \usecolortheme{seagull}
+% \usecolortheme{seahorse}
+\usecolortheme{spruce}
+% \usecolortheme{whale}
+% \usecolortheme{wolverine}
+
+%----------------------------------------------------------------------------------------
+%	SELECT FONT THEME & FONTS
+%----------------------------------------------------------------------------------------
+
+% Beamer comes with several font themes to easily change the fonts used in various parts of the presentation. Review the comments beside each one to decide if you would like to use it. Note that additional options can be specified for several of these font themes, consult the beamer documentation for more information.
+
+\usefonttheme{default} % Typeset using the default sans serif font
+%\usefonttheme{serif} % Typeset using the default serif font (make sure a sans font isn't being set as the default font if you use this option!)
+\usefonttheme{structurebold} % Typeset important structure text (titles, headlines, footlines, sidebar, etc) in bold
+%\usefonttheme{structureitalicserif} % Typeset important structure text (titles, headlines, footlines, sidebar, etc) in italic serif
+%\usefonttheme{structuresmallcapsserif} % Typeset important structure text (titles, headlines, footlines, sidebar, etc) in small caps serif
+
+%------------------------------------------------
+
+%\usepackage{mathptmx} % Use the Times font for serif text
+\usepackage{palatino} % Use the Palatino font for serif text
+
+%\usepackage{helvet} % Use the Helvetica font for sans serif text
+\usepackage[default]{opensans} % Use the Open Sans font for sans serif text
+%\usepackage[default]{FiraSans} % Use the Fira Sans font for sans serif text
+%\usepackage[default]{lato} % Use the Lato font for sans serif text
+
+%----------------------------------------------------------------------------------------
+%	SELECT INNER THEME
+%----------------------------------------------------------------------------------------
+
+% Inner themes change the styling of internal slide elements, for example: bullet points, blocks, bibliography entries, title pages, theorems, etc. Uncomment each theme in turn to see what changes it makes to your presentation.
+
+%\useinnertheme{default}
+\useinnertheme{circles}
+% \useinnertheme{rectangles}
+% \useinnertheme{rounded}
+%\useinnertheme{inmargin}
+
+%----------------------------------------------------------------------------------------
+%	SELECT OUTER THEME
+%----------------------------------------------------------------------------------------
+
+% Outer themes change the overall layout of slides, such as: header and footer lines, sidebars and slide titles. Uncomment each theme in turn to see what changes it makes to your presentation.
+
+% \useoutertheme{default}
+% \useoutertheme{infolines}
+\useoutertheme{miniframes}
+% \useoutertheme{smoothbars}
+% \useoutertheme{sidebar}
+%\useoutertheme{split}
+% \useoutertheme{shadow}
+% \useoutertheme{tree}
+%\useoutertheme{smoothtree}
+
+%\setbeamertemplate{footline} % Uncomment this line to remove the footer line in all slides
+%\setbeamertemplate{footline}[page number] % Uncomment this line to replace the footer line in all slides with a simple slide count
+
+%\setbeamertemplate{navigation symbols}{} % Uncomment this line to remove the navigation symbols from the bottom of all slides
+
+%----------------------------------------------------------------------------------------
+%	PRESENTATION INFORMATION
+%----------------------------------------------------------------------------------------
+
+\title[LAB 09: Floating-Point]{LAB 09: Floating-Point} % The short title in the optional parameter appears at the bottom of every slide, the full title in the main parameter is only on the title page
+
+% \subtitle{Optional Subtitle} % Presentation subtitle, remove this command if a subtitle isn't required
+
+\author[S. AlSaleh]{Saleh AlSaleh \\ \smallskip \textit{salehs@kfupm.edu.sa}} % Presenter name(s), the optional parameter can contain a shortened version to appear on the bottom of every slide, while the main parameter will appear on the title slide
+
+\institute[KFUPM]{King Fahd University of Petroleum and Minerals \\ College of Computing and Mathematics \\ Computer Engineering Department} % Your institution, the optional parameter can be used for the institution shorthand and will appear on the bottom of every slide after author names, while the required parameter is used on the title slide and can include your email address or additional information on separate lines
+
+\date[March 12, 2023]{COE301: Computer Architecture \\ Term 222} % Presentation date or conference/meeting name, the optional parameter can contain a shortened version to appear on the bottom of every slide, while the required parameter value is output to the title slide
+
+%----------------------------------------------------------------------------------------
+
+\begin{document}
+
+%----------------------------------------------------------------------------------------
+%	TITLE SLIDE
+%----------------------------------------------------------------------------------------
+
+\begin{frame}
+	% Output the title slide, automatically created using the text entered in the PRESENTATION INFORMATION block above
+	\titlepage
+\end{frame}
+
+%----------------------------------------------------------------------------------------
+%	TABLE OF CONTENTS SLIDE
+%----------------------------------------------------------------------------------------
+
+% The table of contents outputs the sections and subsections that appear in your presentation, specified with the standard \section and \subsection commands. You may either display all sections and subsections on one slide with \tableofcontents, or display each section at a time on subsequent slides with \tableofcontents[pausesections]. The latter is useful if you want to step through each section and mention what you will discuss.
+
+\begin{frame}
+	\frametitle{Agenda} % Slide title, remove this command for no title
+	
+	\tableofcontents % Output the table of contents (all sections on one slide)
+	%\tableofcontents[pausesections] % Output the table of contents (break sections up across separate slides)
+\end{frame}
+
+%----------------------------------------------------------------------------------------
+%	PRESENTATION BODY SLIDES
+%----------------------------------------------------------------------------------------
+
+\section{IEEE 754 Standard} % Sections are added in order to organize your presentation into discrete blocks, all sections and subsections are automatically output to the table of contents as an overview of the talk but NOT output in the presentation as separate slides
+\begin{frame}
+	\frametitle{IEEE 754 Standard}
+	
+	\begin{itemize}
+		\item S = Sign Bit (0 positive, 1 negative) \pause
+		\item E = Exponent Bits (8 Single, 11 Double Precession)		\pause
+		\item F = Fraction Bits (23 Single, 52 Double Precision) 		\pause
+		\item Bias (127 Single, 1023 Double)		\pause
+		\item Normalized Value = $\pm (1.F)_{2}\times 2^{E-Bias}$
+	\end{itemize}
+	\begin{table}
+		\centering
+		\resizebox{\linewidth}{!}{%
+		\begin{tabular}{|p{0.03125\textwidth}|m{0.25\textwidth}|m{0.71875\textwidth}|}
+			\toprule
+			\textbf{S} 	& \textbf{Exponent} & \textbf{Fraction} 															\\
+			\bottomrule
+		\end{tabular}%
+		}
+		\caption{Single-Precession Floating Point}
+	\end{table}
+	
+
+\end{frame}
+
+%------------------------------------------------
+
+\section{Coprocessor 1}
+\begin{frame}
+	\frametitle{Coprocessor 1}
+	\begin{itemize}
+		\item Coprocessor 1 has 32 floating-point registers (32 bit each). \pause
+		\item These registers are numbered as \color{red}\$f0\color{black}-\color{red}\$f31\color{black}. \pause
+		\item Each register can hold one single-precision floating-point number. \pause
+		\item The double-precision number uses two registers and is stored in an even-odd pair of registers, but we only refer to the even-numbered register. \pause
+		\item There are 8 condition flags, numbered from 0 to 7 used by floating-point compare and branch instructions. 
+	\end{itemize}
+	
+\end{frame}
+
+\section{FP Instructions}
+\begin{frame}
+	\frametitle{Floating Point Instructions}
+	
+	\begin{table}
+		\centering
+		\resizebox{\linewidth}{!}{%
+			\begin{tabular}{|l|l|}
+				\toprule
+				\textbf{Instruction} & \textbf{Description} 													\\
+				\midrule
+				\color{blue}lwc1 \color{black}or \color{blue}l.s         	& Load a word from memory to a single-precision floating-point register		\\ \midrule
+				\color{blue}ldc1 \color{black}or \color{blue}l.d         	& Load a double word from memory to a double-precision register				\\ \midrule
+				\color{blue}swc1 \color{black}or \color{blue}s.s     		& Store a single-precision floating-point register in memory				\\ \midrule
+				\color{blue}sdc1 \color{black}or \color{blue}s.d    		& Store a double-precision floating-point register in memory				\\ \midrule
+				\color{blue}add.s\color{black}, \color{blue}add.d    		& Floating Point Addition (Single, Double)									\\ \midrule
+				\color{blue}sub.s\color{black}, \color{blue}sub.d 			& Floating Point Subtraction (Single, Double)								\\ \midrule
+				\color{blue}mul.s\color{black}, \color{blue}mul.d 			& Floating Point Multiplication (Single, Double)							\\ \midrule
+				\color{blue}div.s\color{black}, \color{blue}div.d 			& Floating Point Division (Single, Double)									\\ \midrule
+				\color{blue}sqrt.s\color{black}, \color{blue}sqrt.d 		& Floating Point Square Root (Single, Double)								\\ \midrule
+				\color{blue}abs.s\color{black}, \color{blue}abs.d			& Floating Point Absolute Value (Single, Double)							\\ 
+				\bottomrule
+			\end{tabular}%
+		}
+	\end{table}
+\end{frame}
+
+
+\begin{frame}
+	\frametitle{Floating Point Instructions}
+	\vspace{-0.5cm}
+	\begin{table}
+		\centering
+		\resizebox{\linewidth}{!}{%
+			\begin{tabular}{|l|l|}
+				\toprule
+				\textbf{Instruction} 	& \textbf{Description} 															\\
+				\midrule
+				\color{blue}neg.s\color{black}, \color{blue}neg.d			& Floating Point Negative Value (Single, Double)								\\ \midrule
+				\color{blue}mov.s\color{black}, \color{blue}mov.d        	& Copy floating point value from one register to another (Single, Double)		\\ \midrule
+				\color{blue}cvt.s.w 	        							& Convert from word (integer) to single precision floating point				\\ \midrule
+				\color{blue}cvt.s.d 	    								& Convert from double precision to single precision floating point				\\ \midrule
+				\color{blue}cvt.d.w     									& Convert from word (integer) to double precision floating point				\\ \midrule
+				\color{blue}cvt.d.s		    								& Convert from single precision to double precision floating point				\\ \midrule
+				\color{blue}cvt.w.s		 									& Convert from single precision to word (integer)								\\ \midrule
+				\color{blue}cvt.w.d		 									& Convert from double precision to word (integer)								\\ \midrule
+				\color{blue}ceil.w.s\color{black}, \color{blue}ceil.w.d		& Integer ceiling (Single, Double)												\\ \midrule
+				\color{blue}floor.w.s\color{black}, \color{blue}floor.w.d	& Integer floor(Single, Double)													\\ \midrule
+				\color{blue}trunc.w.s\color{black}, \color{blue}trunc.w.d	& Truncate (Single, Double)														\\ 
+				\bottomrule
+			\end{tabular}%
+		}
+	\end{table}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Floating Point Conditional Instructions}
+	\vspace{-0.75cm}
+	\begin{table}
+		\centering
+		\resizebox{\linewidth}{!}{%
+			\begin{tabular}{@{}|l|l|l|@{}}
+			\toprule
+			\textbf{Instruction}                                    										& \textbf{Example}                                                             																																								& \textbf{Description}                                                                                                                                 																											\\ \midrule
+			\begin{tabular}[c]{@{}l@{}}\color{blue}c.eq.s\\ \color{blue}c.eg.d\color{black}\end{tabular} 	& \begin{tabular}[c]{@{}l@{}}\color{blue}c.eq.s \color{red}\$f0\color{black}, \color{red}\$f1\color{black}\\ \color{blue}c.eq.d \color{black}3, \color{red}\$f2\color{black}, \color{red}\$f4\color{black}\end{tabular} 					& \begin{tabular}[c]{@{}l@{}}If (\color{red}\$f0\color{black} $==$ \color{red}\$f1\color{black}), set flag 0 to true, else false\\ If (\color{red}\$f2\color{black} $==$ \color{red}\$f4\color{black}), set flag 3 to true, else false\end{tabular}   			\\ \midrule
+			\begin{tabular}[c]{@{}l@{}}\color{blue}c.lt.s\\ \color{blue}c.lt.d\color{black}\end{tabular} 	& \begin{tabular}[c]{@{}l@{}}\color{blue}c.lt.s \color{red}\$f0\color{black}, \color{red}\$f1\color{black}\\ \color{blue}c.lt.d \color{black}4, \color{red}\$f2\color{black}, \color{red}\$f4\color{black}\end{tabular} 					& \begin{tabular}[c]{@{}l@{}}If (\color{red}\$f0\color{black} $<$  \color{red}\$f1\color{black}), set flag 0 to true, else false\\ If (\color{red}\$f2\color{black} $<$  \color{red}\$f4\color{black}), set flag 4 to true, else false\end{tabular}    			\\ \midrule
+			\begin{tabular}[c]{@{}l@{}}\color{blue}c.le.s\\ \color{blue}c.le.d\color{black}\end{tabular} 	& \begin{tabular}[c]{@{}l@{}}\color{blue}c.le.s \color{red}\$f0\color{black}, \color{red}\$f1\color{black}\\ \color{blue}c.le.d \color{black}5, \color{red}\$f2\color{black}, \color{red}\$f4\color{black}\end{tabular} 					& \begin{tabular}[c]{@{}l@{}}If (\color{red}\$f0\color{black} $<=$ \color{red}\$f1\color{black}), set flag 0 to true, else false\\ If (\color{red}\$f2\color{black} $<=$ \color{red}\$f4\color{black}), set flag 5 to true, else false\end{tabular} 			\\ \midrule
+			\color{blue}bc1t\color{black}                                                    				& \begin{tabular}[c]{@{}l@{}}\color{blue}bc1t \color{black} \textbf{loop}\\ \color{blue}bc1t \color{black}6, \textbf{while}\end{tabular}            																						& \begin{tabular}[c]{@{}l@{}}Branch to \textbf{loop} if condition flag 0 is true\\ Branch to \textbf{while} if condition flag 6 is true\end{tabular}            																								\\ \midrule
+			\color{blue}bc1f\color{black}                                                    				& \begin{tabular}[c]{@{}l@{}}\color{blue}bc1f \color{black} \textbf{loop}\\ \color{blue}bc1f \color{black}7, \textbf{while}\end{tabular}            																						& \begin{tabular}[c]{@{}l@{}}Branch to \textbf{loop} if condition flag 0 is false\\ Branch to \textbf{while} if condition flag 7 is false\end{tabular}          																								\\ \bottomrule
+			\end{tabular}%
+		}
+	\end{table}
+\end{frame}
+
+%------------------------------------------------
+
+\section{FP Register Convention}
+\begin{frame}
+	\frametitle{FP Register Convention}
+	\begin{table}
+		\centering
+		\resizebox{\linewidth}{!}{%
+			\begin{tabular}{|l|l|}
+				\toprule
+				\textbf{Registers} 														& \textbf{Usage} 																																								\\
+				\midrule
+				\color{red}\$f0  \color{black}- \color{red}\$f3\color{black}         	& Floating-point procedure results																																				\\ \midrule
+				\color{red}\$f4  \color{black}- \color{red}\$f11\color{black}        	& Temporary floating-point registers, NOT preserved across procedure calls																										\\ \midrule
+				\color{red}\$f12 \color{black}- \color{red}\$f15\color{black}    		& \begin{tabular}[c]{@{}l@{}}Floating-point parameters, NOT preserved across procedure calls.\\Additional floating-point parameters should be pushed on the stack.\end{tabular}	\\ \midrule
+				\color{red}\$f16 \color{black}- \color{red}\$f19\color{black}  			& More temporary registers, NOT preserved across procedure calls.																												\\ \midrule
+				\color{red}\$f20 \color{black}- \color{red}\$f31\color{black}    		& Saved floating-point registers. Should be preserved across procedure calls.																									\\ 			
+				\bottomrule
+			\end{tabular}%
+		}
+	\end{table}
+\end{frame}
+
+%------------------------------------------------
+
+\section{Live Examples}
+
+\begin{frame}
+	\frametitle{Live Examples}
+	
+\end{frame}
+
+%------------------------------------------------
+
+\section{Tasks}
+
+\begin{frame}
+	\frametitle{Task \#1}
+	\justifying
+		Write a MIPS assembly program that reads two double-precision Floating-Point numbers from the user \textbf{x} \& \textbf{y}. 
+		Then, perform the operation $\frac{x}{y}$. If the result of the division is less than 0, perform $ 3.14 \sqrt{-\frac{x}{y}} $. 
+		Otherwise, perform $\sqrt{8\frac{x}{y}}$. Finally, print the result.
+		\vspace{0.5cm}
+	\begin{columns}[c]
+		\begin{column}{0.5\textwidth}
+			\centering
+			Sample Run 1
+
+			\minibox[frame,pad=4pt]{
+				\color{black}Enter double x: \color{blue}4 			\\
+				\color{black}Enter double y: \color{blue}2 			\\
+				\color{black}The result is \color{darkGreen}4.0 	\\
+			}
+		\end{column}
+		\begin{column}{0.5\textwidth}
+		\centering
+			\centering
+			Sample Run 1
+
+			\minibox[frame,pad=4pt]{
+				\color{black}Enter double x: \color{blue}-1 		\\
+				\color{black}Enter double y: \color{blue}1  		\\
+				\color{black}The result is \color{darkGreen}3.14 	\\
+			}
+			
+		\end{column}
+	\end{columns}
+\end{frame}
+\begin{frame}
+	\frametitle{Task \#2}
+	\begin{columns}[c]
+		\begin{column}{0.4\textwidth}
+			\justifying
+			Write a MIPS assembly program that reads 12 single-precision Floating-Point numbers from the user representing the grades of a quiz taken by 12 student and report back the average.
+		\end{column}
+		\begin{column}{0.6\textwidth}
+		\centering
+			\centering
+			Sample Run 
+
+			\minibox[frame,pad=4pt]{
+				\fontsize{10pt}{11pt}\selectfont Enter grade 0: \color{blue}7.25	\vspace{-0.15cm}							\\
+				\fontsize{10pt}{11pt}\selectfont Enter grade 1: \color{blue}6.5	    \vspace{-0.15cm}							\\
+				\fontsize{10pt}{11pt}\selectfont Enter grade 2: \color{blue}10		\vspace{-0.15cm}							\\
+				\fontsize{10pt}{11pt}\selectfont Enter grade 3: \color{blue}9		\vspace{-0.15cm}							\\
+				\fontsize{10pt}{11pt}\selectfont Enter grade 4: \color{blue}2.75	\vspace{-0.15cm}							\\
+				\fontsize{10pt}{11pt}\selectfont Enter grade 5: \color{blue}8.5		\vspace{-0.15cm}							\\
+				\fontsize{10pt}{11pt}\selectfont Enter grade 6: \color{blue}7.75	\vspace{-0.15cm}							\\
+				\fontsize{10pt}{11pt}\selectfont Enter grade 7: \color{blue}10		\vspace{-0.15cm}							\\
+				\fontsize{10pt}{11pt}\selectfont Enter grade 8: \color{blue}9.5		\vspace{-0.15cm}							\\
+				\fontsize{10pt}{11pt}\selectfont Enter grade 9: \color{blue}9.75	\vspace{-0.15cm}							\\
+				\fontsize{10pt}{11pt}\selectfont Enter grade 10: \color{blue}8.25	\vspace{-0.15cm}							\\
+				\fontsize{10pt}{11pt}\selectfont Enter grade 11: \color{blue}8.75	\vspace{-0.15cm}							\\
+				\fontsize{10pt}{11pt}\selectfont The average of the 12 grades is: \color{darkGreen}8.166667	\\
+			}
+			
+		\end{column}
+	\end{columns}
+\end{frame}
+
+%----------------------------------------------------------------------------------------
+
+\end{document} 
